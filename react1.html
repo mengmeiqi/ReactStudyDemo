@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react1</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let el = <div>mengmeiqi</div>
+        ReactDOM.render(
+          <div>
+              <h1>Header Hello World</h1>
+            {el}
+          </div>,
+          document.getElementById('root')
+
+        );
+    </script>
+</body>
+</html>

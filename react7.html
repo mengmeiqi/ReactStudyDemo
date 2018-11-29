@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react7-component-nest</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  class Add extends React.Component{
+    constructor(props){
+      super(props)
+      this.state={
+        count: 0
+      }
+      this.change=this.change.bind(this)
+    }
+    add(){
+      console.log('...>>>this.state.count',this.state.count)
+      console.log('...>>>this.props.numFather',this.props.numFather)
+      this.setState({
+        count:this.state.count+this.props.numFather
+      })
+    }
+    change(){
+        this.props.changeFather('子组件change函数')
+    }
+    render(){
+      return(
+        <div>
+            <button onClick={this.add.bind(this)}>Add点击做加法</button>
+            <h1>子组件count：{this.state.count}</h1>
+            <button onClick={this.change}>Add点击传值给父组件</button>
+        </div>
+      )
+    }
+  }
+  class AddFather extends React.Component{
+    constructor(props){
+      super(props)
+      this.state={
+        count:0,
+        numFather:10,
+        paramSon:'父组件paramSon值'
+      }
+    }
+    changeFather(param){
+      this.setState({
+        paramSon:param
+      })
+    }
+    render(){
+      return(
+        <div>
+          <h1>父组件count：{this.state.count}</h1>
+          <h1>父组件收到子组件传过来的值：{this.state.paramSon}</h1>
+          <Add changeFather={this.changeFather.bind(this)} numFather={this.state.numFather}/>
+        </div>
+      )
+    }
+  }
+  ReactDOM.render(
+    <AddFather />,
+    document.getElementById('root')
+  )
+</script>
+</body>
+</html>

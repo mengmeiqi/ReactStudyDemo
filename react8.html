@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react8-King-General-Soldier</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class King extends React.Component{
+          constructor(props){
+            super(props)
+            this.state={
+              kingCount:200
+            }
+            this.kingBorrowSoldiersA=this.kingBorrowSoldiersA.bind(this)
+            this.kingBorrowSoldiersB=this.kingBorrowSoldiersB.bind(this)
+          }
+          kingBorrowSoldiersA(aBorrowSoldiersCount){
+            this.setState({
+              kingCount:this.state.kingCount-aBorrowSoldiersCount
+            })
+            console.log('...>>>kingBorrowSoldiersA aBorrowSoldiersCount>>>...',aBorrowSoldiersCount)
+          }
+          kingBorrowSoldiersB(bBorrowSoldiersCount){
+            this.setState({
+              kingCount:this.state.kingCount-bBorrowSoldiersCount
+            })
+            console.log('...>>>kingBorrowSoldiersB bBorrowSoldiersCount>>>...',bBorrowSoldiersCount)
+          }
+          render(){
+            return(
+              <div>
+                <h1>国王的士兵：{this.state.kingCount}</h1>
+                <GeneralA kingBorrowSoldiersA={this.kingBorrowSoldiersA}/>
+                <GeneralB kingBorrowSoldiersB={this.kingBorrowSoldiersB}/>
+              </div>
+            )
+          }
+        }
+        class GeneralA extends React.Component{
+          constructor(props){
+            super(props)
+            this.state={
+              generalACount:100,
+              aBorrowSoldiersCount:1
+            }
+          }
+          aBorrowSoldiers(aBorrowSoldiersCount){
+            this.setState({
+              generalACount:this.state.generalACount + aBorrowSoldiersCount
+            })
+            this.props.kingBorrowSoldiersA(aBorrowSoldiersCount)
+            console.log('...>>>子组件aBorrowSoldiersCount>>>...',aBorrowSoldiersCount)
+          }
+          render(){
+            return(
+              <div>
+                <h1>将军A的士兵：{this.state.generalACount}</h1>
+                <button class="btn" onClick={this.aBorrowSoldiers.bind(this,this.state.aBorrowSoldiersCount)}>将军A向国王借兵</button>
+              </div>
+            )
+          }
+        }
+        class GeneralB extends React.Component{
+          constructor(props){
+            super(props)
+            this.state={
+              generalBCount:100,
+              bBorrowSoldiersCount:2
+            }
+          }
+          bBorrowSoldiers(bBorrowSoldiersCount){
+            this.setState({
+              generalBCount:this.state.generalBCount+bBorrowSoldiersCount
+            })
+            this.props.kingBorrowSoldiersB(bBorrowSoldiersCount)
+            console.log('...>>>子组件bBorrowSoldiersCount>>>...',bBorrowSoldiersCount)
+          }
+          render(){
+            return(
+              <div>
+                  <h1>将军B的士兵：{this.state.generalBCount}</h1>
+                  <button class="btn" onClick={this.bBorrowSoldiers.bind(this,this.state.bBorrowSoldiersCount)}>将军B向国王借兵</button>
+              </div>
+            )
+          }
+        }
+        ReactDOM.render(
+          <King />,
+          document.getElementById('root')
+        )
+    </script>
+    <style>
+        .btn{
+            height:30px;
+            line-height:30px;
+        }
+    </style>
+</body>
+</html>
