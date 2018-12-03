@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react10-生命周期</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class LifeCycle extends React.Component{
+          constructor(props){
+            super(props)
+            this.state={
+              count:0
+            }
+          }
+          componentWillMount(){
+            console.log('>>>1 componentWillMount')
+          }
+          componentDidMount(){
+            console.log('>>>2 componentDidMount', ReactDOM.findDOMNode(this))
+          }
+          componentWillReceiveProps(nextProps){
+            console.log('>>>3 componentWillReceiveProps',nextProps)
+          }
+          shouldComponentUpdate(nextProps,nextState){
+            console.log('>>>4 shouldComponentUpdate',nextProps,nextState)
+            return true;
+          }
+          componentWillUpdate(){
+            console.log('>>>5 componentWillUpdate')
+          }
+          componentDidUpdate(){
+            console.log('>>>6 componentDidUpdate')
+          }
+          add(){
+            this.setState({
+              count:++this.state.count
+            })
+          }
+          render(){
+            return(
+              <div>
+                  <button onClick={this.add.bind(this)}>ADD+1</button>
+                  <div>{this.state.count}</div>
+              </div>
+            )
+          }
+        }
+        ReactDOM.render(
+          <LifeCycle />,
+          document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
