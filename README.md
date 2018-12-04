@@ -10,8 +10,7 @@
 ### 2.引入
 
 #### 引入js文件
-
-   <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-   <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+##### <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+##### <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+##### <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
 
