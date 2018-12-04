@@ -9,11 +9,11 @@
 
 ### 2.引入
 
-####  1⃣ 引入js文件
+####  （1）引入js文件
 ##### <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script> react核心文件
 ##### <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  react-dom 虚拟DOM
 ##### <script crossorigin src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>  bable（babel 可以转换很多脚本语言）
-####  2⃣ 或者使用npm，安装脚手架
+####  （2）或者使用npm，安装脚手架
 #### 引入type=“text/babel”
 ##### <script type="text/babel"></script>
 
@@ -29,3 +29,5 @@
         </div>,
         document.getElementById('root')
     );
+
+### 4.
