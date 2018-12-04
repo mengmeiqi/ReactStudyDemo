@@ -23,9 +23,9 @@
 
 ##### `let el = <div>mengmeiqi</div>`
 ##### `ReactDOM.render(`
-##### `<div>`
-#####     `<h1>Header Hello World</h1>`
-#####   `{el}`
-##### `</div>,`
-##### `document.getElementById('root')`
+#####       `<div>`
+#####           `<h1>Header Hello World</h1>`
+#####           `{el}`
+#####       `</div>,`
+#####       `document.getElementById('root')`
 ##### `);`
